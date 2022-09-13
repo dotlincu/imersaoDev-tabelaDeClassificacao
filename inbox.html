@@ -9,7 +9,10 @@
 </head>
 <body>
     <h1>Tabela de classificação</h1>
-    
+    <div>
+        <input type="text" id="adicionarJogador" name="adicionarJogador" placeholder="Insira o nomde de um jogador">
+        <button onclick="adicionarJogador()">Adicionar Jogador</button>
+    </div><br/>
     <table style="width:100%">
         <thead>
             <tr>
@@ -19,6 +22,7 @@
                 <th>Derrotas</th>
                 <th>Pontos</th>
                 <th colspan="3">Ações</th>
+                <!-- <th>Líder</th> -->
             </tr>
         </thead>
         <tbody id="tabelaJogadores">

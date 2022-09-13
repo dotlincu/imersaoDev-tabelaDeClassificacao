@@ -1,13 +1,34 @@
-adicionarVitoria() {
-    
+function adicionarVitoria(i) {
+    var jogador = jogadores[i];
+    jogador.vitoria++;
+    calculaPontos(jogador);
+    exibeJogadores(jogadores);
+};
+
+function adicionarEmpate(i) {
+    var jogador = jogadores[i];
+    jogador.empate++;
+    calculaPontos(jogador);
+    exibeJogadores(jogadores);
 }
 
-adicionarEmpate() {
-
+function adicionarDerrota(i) {
+    var jogador = jogadores[i];
+    jogador.derrota++;
+    exibeJogadores(jogadores);
 }
 
-adicionarDerrota() {
-
+function adicionarJogador() {
+    var nome = document.getElementById("adicionarJogador").value;
+    jogadores.push({
+        nome: nome,
+        vitoria: 0,
+        empate: 0,
+        derrota: 0,
+        pontos: 0
+    });
+    document.getElementById("adicionarJogador").value = "";
+    exibeJogadores(jogadores);
 }
 
 var rafa = {
@@ -32,6 +53,8 @@ var pedro = {
     pontos: 0
 };
 
+var jogadores = [rafa, paulo, pedro];
+
 calculaPontos(rafa);
 calculaPontos(paulo);
 calculaPontos(pedro);
@@ -39,8 +62,6 @@ calculaPontos(pedro);
 function calculaPontos(jogador) {
     jogador.pontos = (jogador.vitoria * 3) + (jogador.empate);
 };
-
-var jogadores = [rafa, paulo, pedro];
 
 function exibeJogadores(jogadores) {
     var elemento = "";
@@ -50,13 +71,13 @@ function exibeJogadores(jogadores) {
         elemento += "<td>" + jogadores[i].empate +"</td>";
         elemento += "<td>" + jogadores[i].derrota + "</td>";
         elemento += "<td>" + jogadores[i].pontos + "</td>";
-        elemento += "<td><button onClick='adicionarVitoria()'>Vitória</button></td>";
-        elemento += "<td><button onClick='adicionarEmpate()'>Empate</button></td>";
-        elemento += "<td><button onClick='adicionarDerrota()'>Derrota</button></td>";
+        elemento += "<td><button onClick='adicionarVitoria(" + i + ")'>Vitória</button></td>";
+        elemento += "<td><button onClick='adicionarEmpate(" + i + ")'>Empate</button></td>";
+        elemento += "<td><button onClick='adicionarDerrota(" + i + ")'>Derrota</button></td>";
         elemento += "</tr>";    
     }
 
     document.getElementById("tabelaJogadores").innerHTML = elemento;
-}
+};
 
 exibeJogadores(jogadores);

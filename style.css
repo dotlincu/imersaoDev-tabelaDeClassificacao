@@ -54,3 +54,11 @@ td {
 	border: solid 1px white;
 	color: white;
 }
+
+footer {
+	height: 10vh;
+	color: #999;
+	text-align: center;
+	line-height: 10vh;
+	font-size: 12px;
+}
